@@ -1,5 +1,7 @@
 # README
 
+For the images I used paperclip so no default images are loaded, but you can sign in and upload the ones you like and everything will be fine!
+
 This is the overview of my Instagram look-alike:
 
 
