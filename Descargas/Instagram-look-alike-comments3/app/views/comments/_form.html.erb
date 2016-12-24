@@ -1,0 +1,8 @@
+<%= simple_form_for([@pic, @pic.comments.build]) do |c| %>
+
+
+<%= c.input :comment %>
+<%= c.button :submit, class: "btn-custom2" %>
+
+
+<% end %>

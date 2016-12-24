@@ -1,0 +1,26 @@
+
+<div class="container">
+
+	<div class="row">
+		<h1>Pictures</h1>
+		
+		<div class="col-lg-8 col-md-8 grid-products">
+			<br>
+				<% if user_signed_in? %>
+				<p><%= link_to "Upload Picture", new_picture_path, class: "btn btn-warning" %>
+				<% end %>
+			</p>
+			<br>
+			<% @pics.each do |pic| %>
+			<div class="col-lg-4 col-md-4">
+
+				<h2 class="index_titles"><a href="/pictures/<%= pic.id%>"><%= pic.title %> <%= image_tag(pic.image.url, :class => "img-responsive") %></a></h2>
+
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+
+

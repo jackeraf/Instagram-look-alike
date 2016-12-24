@@ -1,0 +1,18 @@
+<div class="comment">
+	
+	<p class="picture-comment">
+		<%= comment.comment %>
+		<!-- by rendering @pic.comments from the show page it's the same as doing a .each to @pic.comments inside the partial so I can put comment.comment directly in the partial without the .each and that will access the comment attribute from the comment object -->
+	
+	<% if user_signed_in? %>
+
+	<% if current_user.id == comment.user_id %>
+
+			<%= link_to "Delete", picture_comment_path(@pic, comment.id), :method => :delete, data: { confirm: "Are you sure you want to delete it?" }, :class => "btn btn-danger btn-xs" %>
+		<% end %>
+
+		<% end %>
+	</p>
+	
+	
+</div>

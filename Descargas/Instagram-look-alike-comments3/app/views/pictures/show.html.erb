@@ -1,0 +1,70 @@
+<div class="row" id="pic_show">
+	<div class="col-md-6 col-md-offset-3">
+		<div class="panel panel-default">
+			<div class="panel heading pic_image">
+				<%= image_tag(@pic.image.url(:medium)) %>
+			</div>
+			<div class="panel-body">
+				<h2><%= @pic.title %></h2>
+				<p><%= @pic.description %></p>
+				
+			</div>
+			<div class="panel-footer">
+				<div class="row">
+					<div class="col-md-6">
+						<p><%= @pic.user.email %></p>
+					</div>
+					<div class="col-md-6">
+						<div class="btn-group pull-right">
+							<%= link_to like_picture_path(@pic), method: :put, class: "btn btn-default" do %>
+							<span class="glyphicon glyphicon-thumbs-up"><%= @pic.get_upvotes.size %></span>
+							<% end %>
+
+							<% if user_signed_in? %>
+
+							
+							<%= link_to "Edit", edit_picture_path, class: "btn btn-info" %>
+							<%= link_to "Delete", picture_path, :method => :delete, :confirm => "Are you sure you want to delete it?", class: "btn btn-danger" %>
+
+							<% end %>
+						</div>
+
+						
+					</div>
+				</div>
+				<div class="row">
+							<div class="col-md-12">
+								<div class="comments">
+									<h2 class="comments_h2"> Comments </h2>
+									<%= render @pic.comments %>
+									<% if !user_signed_in? %>
+									<div>
+									<br>
+										<%= link_to "Add Comments", picture_path(@pic), class: "btn-custom"  %>
+										<script type="text/javascript">
+										$(".btn-custom").click(function(event){
+											event.preventDefault();
+											alert("You should sign in to comment pictures")
+
+										})
+									</script>
+									</div>
+									<% else %>
+									<br>
+									<%= link_to "Add Comments", new_picture_comment_path(@pic), class: "btn-custom"  %>
+									
+									<% end %>
+								</div>
+							</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+
+<!-- => <img src="/icons/icon.gif" width="16" height="16" alt="Icon" />
+-->
+
